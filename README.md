@@ -1,2 +1,2 @@
-# snake-game
-the popular snake game made in JS
+# snake-game 🐍
+The popular snake game made in JS
