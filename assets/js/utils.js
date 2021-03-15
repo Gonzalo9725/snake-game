@@ -1,12 +1,5 @@
 import { DIRECTION } from "./constants.js";
 
-export let snake = [
-  { posX: 45, posY: 30 },
-  { posX: 45, posY: 15 },
-  { posX: 30, posY: 15 },
-  { posX: 15, posY: 15 },
-];
-
 export const drawGrid = (context) => {
   for (let x = 15; x < 600; x += 15) {
     context.beginPath();
@@ -34,17 +27,17 @@ export const drawSnake = (context, snake) => {
   });
 };
 
-export const moveSnake = (newDirection, snake) => {
+export const moveSnake = (direction, snake) => {
   let headPosX = snake[0].posX;
   let headPosY = snake[0].posY;
 
-  if (newDirection === DIRECTION.RIGHT) {
+  if (direction === DIRECTION.RIGHT) {
     headPosX += 15;
-  } else if (newDirection === DIRECTION.LEFT) {
+  } else if (direction === DIRECTION.LEFT) {
     headPosX -= 15;
-  } else if (newDirection === DIRECTION.DOWN) {
+  } else if (direction === DIRECTION.DOWN) {
     headPosY += 15;
-  } else if (newDirection === DIRECTION.UP) {
+  } else if (direction === DIRECTION.UP) {
     headPosY -= 15;
   }
 
