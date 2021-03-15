@@ -41,7 +41,7 @@ export const moveSnake = (direction, snake) => {
     headPosY -= 15;
   }
 
-  // Add new head of snake at beginning of array
+  // Add snake head
   snake.unshift({ posX: headPosX, posY: headPosY });
   // Delete snake's tail
   snake.pop();

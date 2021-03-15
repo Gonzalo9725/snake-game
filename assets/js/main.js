@@ -4,6 +4,7 @@ import {
   ARROW_LEFT,
   ARROW_RIGHT,
   DIRECTION,
+  FPS,
 } from "./constants.js";
 import { drawGrid, drawSnake, moveSnake } from "./utils.js";
 
@@ -17,9 +18,6 @@ let snake = [
 ];
 
 let currentDirection = DIRECTION.RIGHT;
-
-drawGrid(ctx);
-drawSnake(ctx, snake);
 
 document.addEventListener("keydown", (e) => {
   let newDirection;
@@ -37,8 +35,13 @@ document.addEventListener("keydown", (e) => {
   }
 
   currentDirection = newDirection;
+});
+
+const gameCycle = () => {
   moveSnake(currentDirection, snake);
   ctx.clearRect(0, 0, 600, 600);
   drawGrid(ctx);
   drawSnake(ctx, snake);
-});
+};
+
+setInterval(gameCycle, FPS);
