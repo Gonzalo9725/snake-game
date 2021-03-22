@@ -6,7 +6,7 @@ import {
   DIRECTION,
   FPS,
 } from "./constants.js";
-import { drawGrid, drawSnake, moveSnake } from "./utils.js";
+import { drawGrid, drawSnake, moveSnake, drawFood } from "./utils.js";
 
 let CANVAS_GAME = document.getElementById("canvasGame");
 let CTX = CANVAS_GAME.getContext("2d");
@@ -19,6 +19,8 @@ let snake = [
 
 let currentDirection = DIRECTION.RIGHT;
 let newDirection = DIRECTION.RIGHT;
+
+let food = { posX: 90, posY: 90 };
 
 let cycle;
 
@@ -40,10 +42,12 @@ const gameCycle = () => {
   CTX.clearRect(0, 0, 600, 600);
   drawGrid(CTX);
   drawSnake(CTX, snake);
+  drawFood(CTX, food);
 };
 
 drawGrid(CTX);
 drawSnake(CTX, snake);
+drawFood(CTX, food);
 
 CANVAS_GAME.addEventListener("click", () => {
   if (cycle === undefined) {
