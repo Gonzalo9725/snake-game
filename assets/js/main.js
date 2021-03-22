@@ -6,7 +6,13 @@ import {
   DIRECTION,
   FPS,
 } from "./constants.js";
-import { drawGrid, drawSnake, moveSnake, drawFood } from "./utils.js";
+import {
+  drawGrid,
+  drawSnake,
+  moveSnake,
+  drawFood,
+  createNewFoodLocation,
+} from "./utils.js";
 
 let CANVAS_GAME = document.getElementById("canvasGame");
 let CTX = CANVAS_GAME.getContext("2d");
@@ -20,7 +26,7 @@ let snake = [
 let currentDirection = DIRECTION.RIGHT;
 let newDirection = DIRECTION.RIGHT;
 
-let food = { posX: 90, posY: 90 };
+let food = createNewFoodLocation(snake);
 
 let cycle;
 

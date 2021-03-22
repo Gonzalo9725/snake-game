@@ -51,6 +51,28 @@ export const moveSnake = (direction, snake) => {
   snake.pop();
 };
 
+export const createNewFoodLocation = (snake) => {
+  while (true) {
+    let posX = Math.floor(Math.random() * 39) * 15;
+    let posY = Math.floor(Math.random() * 39) * 15;
+
+    let conflictWithSnake = false;
+
+    for (let i = 0; i < snake.length; i++) {
+      if (snake[i].posX === posX && snake[i].posY === posY) {
+        conflictWithSnake = true;
+        break;
+      }
+    }
+
+    if (conflictWithSnake) {
+      continue;
+    }
+
+    return { posX, posY };
+  }
+};
+
 export const drawFood = (context, food) => {
   fillSquare(context, food.posX, food.posY);
 };
