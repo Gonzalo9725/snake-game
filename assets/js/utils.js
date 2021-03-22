@@ -18,12 +18,16 @@ export const drawGrid = (context) => {
   }
 };
 
+const fillSquare = (context, posX, posY) => {
+  context.beginPath();
+  context.fillStyle = "black";
+  context.fillRect(posX, posY, 15, 15);
+  context.stroke();
+};
+
 export const drawSnake = (context, snake) => {
   snake.forEach((obj) => {
-    context.beginPath();
-    context.fillStyle = "black";
-    context.fillRect(obj.posX, obj.posY, 15, 15);
-    context.stroke();
+    fillSquare(context, obj.posX, obj.posY);
   });
 };
 
@@ -45,4 +49,8 @@ export const moveSnake = (direction, snake) => {
   snake.unshift({ posX: headPosX, posY: headPosY });
   // Delete snake's tail
   snake.pop();
+};
+
+export const drawFood = (context, food) => {
+  fillSquare(context, food.posX, food.posY);
 };
