@@ -12,6 +12,7 @@ import {
   moveSnake,
   drawFood,
   createNewFoodLocation,
+  snakeAteFood,
 } from "./utils.js";
 
 let CANVAS_GAME = document.getElementById("canvasGame");
@@ -45,6 +46,11 @@ document.addEventListener("keydown", (e) => {
 const gameCycle = () => {
   moveSnake(newDirection, snake);
   currentDirection = newDirection;
+
+  if (snakeAteFood(snake, food)) {
+    food = createNewFoodLocation(snake);
+  }
+
   CTX.clearRect(0, 0, 600, 600);
   drawGrid(CTX);
   drawSnake(CTX, snake);
