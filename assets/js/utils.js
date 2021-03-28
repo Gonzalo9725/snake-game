@@ -76,3 +76,7 @@ export const createNewFoodLocation = (snake) => {
 export const drawFood = (context, food) => {
   fillSquare(context, food.posX, food.posY);
 };
+
+export const snakeAteFood = (snake, food) => {
+  return snake[0].posX === food.posX && snake[0].posY === food.posY;
+};
