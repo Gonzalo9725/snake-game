@@ -1,23 +1,5 @@
 import { DIRECTION } from "./constants.js";
 
-export const drawGrid = (context) => {
-  for (let x = 15; x < 600; x += 15) {
-    context.beginPath();
-    context.fillStyle = "black";
-    context.moveTo(x, 0);
-    context.lineTo(x, 600);
-    context.stroke();
-  }
-
-  for (let y = 15; y < 600; y += 15) {
-    context.beginPath();
-    context.fillStyle = "black";
-    context.moveTo(0, y);
-    context.lineTo(600, y);
-    context.stroke();
-  }
-};
-
 const fillSquare = (context, posX, posY) => {
   context.beginPath();
   context.fillStyle = "black";
@@ -53,8 +35,11 @@ export const moveSnake = (direction, snake) => {
 
 export const createNewFoodLocation = (snake) => {
   while (true) {
-    let posX = Math.floor(Math.random() * 39) * 15;
-    let posY = Math.floor(Math.random() * 39) * 15;
+    let columnX = Math.max(Math.floor(Math.random() * 39), 1);
+    let columnY = Math.max(Math.floor(Math.random() * 39), 1);
+
+    let posX = columnX * 15;
+    let posY = columnY * 15;
 
     let conflictWithSnake = false;
 
@@ -79,4 +64,11 @@ export const drawFood = (context, food) => {
 
 export const snakeAteFood = (snake, food) => {
   return snake[0].posX === food.posX && snake[0].posY === food.posY;
+};
+
+export const drawWalls = (context) => {
+  context.beginPath();
+  context.lineWidth = "2";
+  context.rect(15, 15, 565, 565);
+  context.stroke();
 };

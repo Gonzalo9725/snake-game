@@ -7,7 +7,7 @@ import {
   FPS,
 } from "./constants.js";
 import {
-  drawGrid,
+  drawWalls,
   drawSnake,
   moveSnake,
   drawFood,
@@ -53,12 +53,12 @@ const gameCycle = () => {
   }
 
   CTX.clearRect(0, 0, 600, 600);
-  drawGrid(CTX);
+  drawWalls(CTX);
   drawSnake(CTX, snake);
   drawFood(CTX, food);
 };
 
-drawGrid(CTX);
+drawWalls(CTX);
 drawSnake(CTX, snake);
 drawFood(CTX, food);
 
