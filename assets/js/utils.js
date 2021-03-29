@@ -48,7 +48,7 @@ export const moveSnake = (direction, snake) => {
   // Add snake head
   snake.unshift({ posX: headPosX, posY: headPosY });
   // Delete snake's tail
-  snake.pop();
+  return snake.pop();
 };
 
 export const createNewFoodLocation = (snake) => {

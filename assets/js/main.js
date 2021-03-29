@@ -44,10 +44,11 @@ document.addEventListener("keydown", (e) => {
 });
 
 const gameCycle = () => {
-  moveSnake(newDirection, snake);
+  let tailRemoved = moveSnake(newDirection, snake);
   currentDirection = newDirection;
 
   if (snakeAteFood(snake, food)) {
+    snake.push(tailRemoved);
     food = createNewFoodLocation(snake);
   }
 
