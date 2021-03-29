@@ -69,6 +69,17 @@ export const snakeAteFood = (snake, food) => {
 export const drawWalls = (context) => {
   context.beginPath();
   context.lineWidth = "2";
-  context.rect(15, 15, 565, 565);
+  context.rect(15, 15, 570, 570);
   context.stroke();
+};
+
+export const hitTheWall = (snake) => {
+  let head = snake[0];
+
+  return head.posX < 15 ||
+    head.posY < 15 ||
+    head.posX >= 585 ||
+    head.posY >= 585
+    ? true
+    : false;
 };

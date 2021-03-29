@@ -13,6 +13,7 @@ import {
   drawFood,
   createNewFoodLocation,
   snakeAteFood,
+  hitTheWall,
 } from "./utils.js";
 
 let CANVAS_GAME = document.getElementById("canvasGame");
@@ -50,6 +51,11 @@ const gameCycle = () => {
   if (snakeAteFood(snake, food)) {
     snake.push(tailRemoved);
     food = createNewFoodLocation(snake);
+  }
+
+  if (hitTheWall(snake)) {
+    clearInterval(cycle);
+    return;
   }
 
   CTX.clearRect(0, 0, 600, 600);
