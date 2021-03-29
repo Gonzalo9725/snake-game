@@ -1,4 +1,4 @@
-import { DIRECTION } from "./constants.js";
+import { DIRECTION, impossibleToCrash } from "./constants.js";
 
 const fillSquare = (context, posX, posY) => {
   context.beginPath();
@@ -73,13 +73,27 @@ export const drawWalls = (context) => {
   context.stroke();
 };
 
-export const hitTheWall = (snake) => {
+export const hitTheWallorItself = (snake) => {
   let head = snake[0];
 
-  return head.posX < 15 ||
+  if (
+    head.posX < 15 ||
     head.posY < 15 ||
     head.posX >= 585 ||
     head.posY >= 585
-    ? true
-    : false;
+  ) {
+    return true;
+  }
+
+  if (impossibleToCrash.includes(snake.length)) {
+    return false;
+  }
+
+  for (let i = 1; i < snake.length; i++) {
+    if (head.posX === snake[i].posX && head.posY === snake[i].posY) {
+      return true;
+    }
+  }
+
+  return false;
 };
