@@ -8,7 +8,7 @@ export const S = "KeyS";
 export const A = "KeyA";
 export const D = "KeyD";
 
-export const FPS = 1000 / 10;
+export const FPS = 1000 / 12;
 
 export const DIRECTION = {
   UP: 1,
