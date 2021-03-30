@@ -97,3 +97,7 @@ export const hitTheWallorItself = (snake) => {
 
   return false;
 };
+
+export const showScoreOnScreen = (score_text, score) => {
+  score_text.innerText = "Puntos: " + score;
+};
