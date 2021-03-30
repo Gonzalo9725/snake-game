@@ -26,18 +26,12 @@ let CTX = CANVAS_GAME.getContext("2d");
 
 let SCORE_TEXT = document.getElementById("score");
 
-let snake = [
-  { posX: 45, posY: 15 },
-  { posX: 30, posY: 15 },
-  { posX: 15, posY: 15 },
-];
-
-let currentDirection = DIRECTION.RIGHT;
-let newDirection = DIRECTION.RIGHT;
-
-let food = createNewFoodLocation(snake);
+let snake;
+let currentDirection;
+let newDirection;
+let food;
 let cycle;
-let score = 0;
+let score;
 
 document.addEventListener("keydown", (e) => {
   if (
@@ -71,13 +65,12 @@ const gameCycle = () => {
     snake.push(tailRemoved);
     food = createNewFoodLocation(snake);
 
-    // Increase player score
     score++;
     showScoreOnScreen(SCORE_TEXT, score);
   }
 
   if (hitTheWallorItself(snake)) {
-    clearInterval(cycle);
+    cycle = clearInterval(cycle);
     return;
   }
 
@@ -87,12 +80,26 @@ const gameCycle = () => {
   drawFood(CTX, food);
 };
 
+const startGame = () => {
+  snake = [
+    { posX: 45, posY: 15 },
+    { posX: 30, posY: 15 },
+    { posX: 15, posY: 15 },
+  ];
+
+  currentDirection = DIRECTION.RIGHT;
+  newDirection = DIRECTION.RIGHT;
+
+  food = createNewFoodLocation(snake);
+  score = 0;
+  showScoreOnScreen(SCORE_TEXT, score);
+  cycle = setInterval(gameCycle, FPS);
+};
+
 drawWalls(CTX);
-drawSnake(CTX, snake);
-drawFood(CTX, food);
 
 CANVAS_GAME.addEventListener("click", () => {
   if (cycle === undefined) {
-    cycle = setInterval(gameCycle, FPS);
+    startGame();
   }
 });
