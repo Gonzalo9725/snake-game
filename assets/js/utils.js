@@ -101,3 +101,10 @@ export const hitTheWallorItself = (snake) => {
 export const showScoreOnScreen = (score_text, score) => {
   score_text.innerText = "Puntos: " + score;
 };
+
+export const drawText = (context, text, x, y) => {
+  context.font = "40px Arial";
+  context.textAlign = "center";
+  context.fillStyle = "black";
+  context.fillText(text, x, y);
+};

@@ -19,6 +19,7 @@ import {
   snakeAteFood,
   hitTheWallorItself,
   showScoreOnScreen,
+  drawText,
 } from "./utils.js";
 
 let CANVAS_GAME = document.getElementById("canvasGame");
@@ -97,6 +98,8 @@ const startGame = () => {
 };
 
 drawWalls(CTX);
+drawText(CTX, "¡Click para empezar!", 300, 260);
+drawText(CTX, "Muévete con ↑ ↓ → ←", 300, 310);
 
 CANVAS_GAME.addEventListener("click", () => {
   if (cycle === undefined) {
