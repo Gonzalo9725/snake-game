@@ -2,7 +2,7 @@ import { DIRECTION, impossibleToCrash } from "./constants.js";
 
 const fillSquare = (context, posX, posY) => {
   context.beginPath();
-  context.fillStyle = "black";
+  context.fillStyle = "#2e490b";
   context.fillRect(posX, posY, 15, 15);
   context.stroke();
 };
