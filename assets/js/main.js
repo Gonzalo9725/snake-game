@@ -27,6 +27,7 @@ let CANVAS_GAME = document.getElementById("canvasGame");
 let CTX = CANVAS_GAME.getContext("2d");
 
 let SCORE_TEXT = document.getElementById("score");
+let VICTORY_SOUND = new Audio("punto.wav");
 
 let snake;
 let currentDirection;
@@ -69,6 +70,7 @@ const gameCycle = () => {
 
     score++;
     showScoreOnScreen(SCORE_TEXT, score);
+    VICTORY_SOUND.play();
   }
 
   if (hitTheWallorItself(snake)) {
