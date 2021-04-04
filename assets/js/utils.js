@@ -108,3 +108,9 @@ export const drawText = (context, text, x, y) => {
   context.fillStyle = "black";
   context.fillText(text, x, y);
 };
+
+export const gameOver = (CTX, cycle) => {
+  drawText(CTX, "¡Fin del Juego!", 300, 260);
+  drawText(CTX, "Click para volver a jugar", 300, 310);
+  return clearInterval(cycle);
+};

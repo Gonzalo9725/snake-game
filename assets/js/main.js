@@ -1,12 +1,12 @@
 import {
-  ARROW_UP,
-  ARROW_DOWN,
-  ARROW_LEFT,
-  ARROW_RIGHT,
   W,
   S,
   A,
   D,
+  ARROW_UP,
+  ARROW_DOWN,
+  ARROW_LEFT,
+  ARROW_RIGHT,
   DIRECTION,
   FPS,
 } from "./constants.js";
@@ -20,6 +20,7 @@ import {
   hitTheWallorItself,
   showScoreOnScreen,
   drawText,
+  gameOver,
 } from "./utils.js";
 
 let CANVAS_GAME = document.getElementById("canvasGame");
@@ -71,7 +72,7 @@ const gameCycle = () => {
   }
 
   if (hitTheWallorItself(snake)) {
-    cycle = clearInterval(cycle);
+    cycle = gameOver(CTX, cycle);
     return;
   }
 
