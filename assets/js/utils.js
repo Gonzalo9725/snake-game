@@ -99,7 +99,7 @@ export const hitTheWallorItself = (snake) => {
 };
 
 export const showScoreOnScreen = (score_text, score) => {
-  score_text.innerText = "Puntos: " + score;
+  score_text.innerText = "PUNTOS: " + score;
 };
 
 export const drawText = (context, text, x, y) => {
