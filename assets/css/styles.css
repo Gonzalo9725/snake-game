@@ -7,11 +7,14 @@ body {
 }
 
 #titulo {
+  margin: 10px 0px 20px 10px;
   color: white;
 }
 
 #score {
   color: greenyellow;
+  margin-left: 52px;
+  margin-bottom: 10px;
 }
 
 #gameContainer {
@@ -24,7 +27,6 @@ body {
   width: 50%;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 #overlayGame {
