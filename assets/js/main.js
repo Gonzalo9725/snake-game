@@ -9,6 +9,7 @@ import {
   ARROW_RIGHT,
   DIRECTION,
   FPS,
+  SHAKE_HORIZONTAL_CLASS,
 } from "./constants.js";
 import {
   drawWalls,
@@ -25,6 +26,8 @@ import {
 
 let CANVAS_GAME = document.getElementById("canvasGame");
 let CTX = CANVAS_GAME.getContext("2d");
+
+let NINTENDO_CONTAINER = document.getElementById("nintendoContainer");
 
 let SCORE_TEXT = document.getElementById("score");
 let VICTORY_SOUND = new Audio("punto.wav");
@@ -75,6 +78,7 @@ const gameCycle = () => {
 
   if (hitTheWallorItself(snake)) {
     cycle = gameOver(CTX, cycle);
+    NINTENDO_CONTAINER.classList.add(SHAKE_HORIZONTAL_CLASS);
     return;
   }
 
@@ -97,6 +101,7 @@ const startGame = () => {
   food = createNewFoodLocation(snake);
   score = 0;
   showScoreOnScreen(SCORE_TEXT, score);
+  NINTENDO_CONTAINER.classList.remove(SHAKE_HORIZONTAL_CLASS);
   cycle = setInterval(gameCycle, FPS);
 };
 
