@@ -10,6 +10,7 @@ import {
   DIRECTION,
   FPS,
   SHAKE_HORIZONTAL_CLASS,
+  HIDE_CLASS,
 } from "./constants.js";
 import {
   drawWalls,
@@ -26,18 +27,24 @@ import {
 
 let CANVAS_GAME = document.getElementById("canvasGame");
 let CTX = CANVAS_GAME.getContext("2d");
-
 let NINTENDO_CONTAINER = document.getElementById("nintendoContainer");
-
 let SCORE_TEXT = document.getElementById("score");
+let BANNER_PORTRAIT_MODE = document.getElementById("portraitMode");
+let CLOSE_BANNER_BUTTON = document.getElementById("closeBannerButton");
+let TITLE = document.getElementById("title");
 let VICTORY_SOUND = new Audio("punto.wav");
 
-let snake;
-let currentDirection;
-let newDirection;
-let food;
-let cycle;
-let score;
+let snake, currentDirection, newDirection, food, cycle, score;
+
+window.addEventListener("orientationchange", () => {
+  TITLE.classList.add(HIDE_CLASS);
+  BANNER_PORTRAIT_MODE.classList.remove(HIDE_CLASS);
+});
+
+CLOSE_BANNER_BUTTON.addEventListener("click", () => {
+  TITLE.classList.remove(HIDE_CLASS);
+  BANNER_PORTRAIT_MODE.classList.add(HIDE_CLASS);
+});
 
 document.addEventListener("keydown", (e) => {
   if (
