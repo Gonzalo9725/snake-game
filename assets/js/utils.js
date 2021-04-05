@@ -99,18 +99,18 @@ export const hitTheWallorItself = (snake) => {
 };
 
 export const showScoreOnScreen = (score_text, score) => {
-  score_text.innerText = "PUNTOS: " + score;
+  score_text.innerText = "SCORE: " + score;
 };
 
-export const drawText = (context, text, x, y) => {
-  context.font = "40px Arial";
+export const drawText = (context, text, x, y, font) => {
+  context.font = font + " Arial";
   context.textAlign = "center";
   context.fillStyle = "black";
   context.fillText(text, x, y);
 };
 
 export const gameOver = (CTX, cycle) => {
-  drawText(CTX, "¡Fin del Juego!", 300, 260);
-  drawText(CTX, "Click para volver a jugar", 300, 310);
+  drawText(CTX, "Game Over", 300, 260, "40px");
+  drawText(CTX, "Click to play again", 300, 310, "40px");
   return clearInterval(cycle);
 };
