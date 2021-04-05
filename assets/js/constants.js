@@ -8,6 +8,8 @@ export const S = "KeyS";
 export const A = "KeyA";
 export const D = "KeyD";
 
+export const SHAKE_HORIZONTAL_CLASS = "shake-horizontal";
+
 export const FPS = 1000 / 10;
 
 export const DIRECTION = {
