@@ -106,11 +106,23 @@ const startGame = () => {
 };
 
 drawWalls(CTX);
-drawText(CTX, "¡Click para empezar!", 300, 260);
-drawText(CTX, "Muévete con ↑ ↓ → ←", 300, 310);
+drawText(CTX, "Click to start!", 300, 260, "40px");
+drawText(CTX, "Desktop: Move using ↑ ↓ → ← or W A S D", 300, 310, "25px");
+drawText(CTX, "Mobile: Tap to turn the snake to the right", 300, 360, "25px");
 
 CANVAS_GAME.addEventListener("click", () => {
   if (cycle === undefined) {
     startGame();
+    return;
+  }
+
+  if (currentDirection === DIRECTION.DOWN) {
+    newDirection = DIRECTION.LEFT;
+  } else if (currentDirection === DIRECTION.LEFT) {
+    newDirection = DIRECTION.UP;
+  } else if (currentDirection === DIRECTION.UP) {
+    newDirection = DIRECTION.RIGHT;
+  } else if (currentDirection === DIRECTION.RIGHT) {
+    newDirection = DIRECTION.DOWN;
   }
 });
