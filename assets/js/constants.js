@@ -9,6 +9,7 @@ export const A = "KeyA";
 export const D = "KeyD";
 
 export const SHAKE_HORIZONTAL_CLASS = "shake-horizontal";
+export const HIDE_CLASS = "hide";
 
 export const FPS = 1000 / 10;
 
